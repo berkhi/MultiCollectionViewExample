@@ -13,6 +13,11 @@
 		2E6BE6CD2ADC3348002E2E9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E6BE6CB2ADC3348002E2E9D /* Main.storyboard */; };
 		2E6BE6CF2ADC334A002E2E9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E6BE6CE2ADC334A002E2E9D /* Assets.xcassets */; };
 		2E6BE6D22ADC334A002E2E9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E6BE6D02ADC334A002E2E9D /* LaunchScreen.storyboard */; };
+		2E6BE6DA2ADC36A4002E2E9D /* WorldDishesCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6BE6D92ADC36A4002E2E9D /* WorldDishesCVC.swift */; };
+		2E6BE6DC2ADC3800002E2E9D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6BE6DB2ADC3800002E2E9D /* Model.swift */; };
+		2E6BE6DE2ADD5BD0002E2E9D /* PopularRestaurentsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6BE6DD2ADD5BD0002E2E9D /* PopularRestaurentsCVC.swift */; };
+		2E6BE6E02ADD8562002E2E9D /* MostPopularCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6BE6DF2ADD8562002E2E9D /* MostPopularCVC.swift */; };
+		2E6BE6E22ADDA884002E2E9D /* RecentItemsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6BE6E12ADDA884002E2E9D /* RecentItemsCVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		2E6BE6CE2ADC334A002E2E9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2E6BE6D12ADC334A002E2E9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2E6BE6D32ADC334A002E2E9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2E6BE6D92ADC36A4002E2E9D /* WorldDishesCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldDishesCVC.swift; sourceTree = "<group>"; };
+		2E6BE6DB2ADC3800002E2E9D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		2E6BE6DD2ADD5BD0002E2E9D /* PopularRestaurentsCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularRestaurentsCVC.swift; sourceTree = "<group>"; };
+		2E6BE6DF2ADD8562002E2E9D /* MostPopularCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostPopularCVC.swift; sourceTree = "<group>"; };
+		2E6BE6E12ADDA884002E2E9D /* RecentItemsCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentItemsCVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +69,11 @@
 				2E6BE6C52ADC3348002E2E9D /* AppDelegate.swift */,
 				2E6BE6C72ADC3348002E2E9D /* SceneDelegate.swift */,
 				2E6BE6C92ADC3348002E2E9D /* ViewController.swift */,
+				2E6BE6D92ADC36A4002E2E9D /* WorldDishesCVC.swift */,
+				2E6BE6DD2ADD5BD0002E2E9D /* PopularRestaurentsCVC.swift */,
+				2E6BE6DF2ADD8562002E2E9D /* MostPopularCVC.swift */,
+				2E6BE6E12ADDA884002E2E9D /* RecentItemsCVC.swift */,
+				2E6BE6DB2ADC3800002E2E9D /* Model.swift */,
 				2E6BE6CB2ADC3348002E2E9D /* Main.storyboard */,
 				2E6BE6CE2ADC334A002E2E9D /* Assets.xcassets */,
 				2E6BE6D02ADC334A002E2E9D /* LaunchScreen.storyboard */,
@@ -138,9 +153,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E6BE6DC2ADC3800002E2E9D /* Model.swift in Sources */,
 				2E6BE6CA2ADC3348002E2E9D /* ViewController.swift in Sources */,
 				2E6BE6C62ADC3348002E2E9D /* AppDelegate.swift in Sources */,
 				2E6BE6C82ADC3348002E2E9D /* SceneDelegate.swift in Sources */,
+				2E6BE6DA2ADC36A4002E2E9D /* WorldDishesCVC.swift in Sources */,
+				2E6BE6E02ADD8562002E2E9D /* MostPopularCVC.swift in Sources */,
+				2E6BE6E22ADDA884002E2E9D /* RecentItemsCVC.swift in Sources */,
+				2E6BE6DE2ADD5BD0002E2E9D /* PopularRestaurentsCVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
