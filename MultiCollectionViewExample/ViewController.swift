@@ -191,9 +191,11 @@ class ViewController: UIViewController {
         return collectionView
     }()
     
-    let pickerData: [DeliveryLocation] = [
-        DeliveryLocation(currentLocation: "Current Location", homeLocation: "Home")
-    ]
+    let containerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     var worldDishes: [WorldDishes] = [
         WorldDishes(image: "srilankan", name: "Sri Lankan"),
@@ -225,38 +227,35 @@ class ViewController: UIViewController {
         shoppingCartButton.tintColor = .black
         self.navigationItem.rightBarButtonItem = shoppingCartButton
         
-        lblDropdown.isUserInteractionEnabled = true
-        lblDropdown.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dropDownLabelTapped)))
-        
-        self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = UIColor.systemBackground
         
         worldDishesCollectionView.delegate = self
         worldDishesCollectionView.dataSource = self
         worldDishesCollectionView.isScrollEnabled = true
         worldDishesCollectionView.showsHorizontalScrollIndicator = false
-        worldDishesCollectionView.layer.borderWidth = 1.0
-        worldDishesCollectionView.layer.borderColor = UIColor.gray.cgColor
+        //        worldDishesCollectionView.layer.borderWidth = 1.0
+        //        worldDishesCollectionView.layer.borderColor = UIColor.gray.cgColor
         
         popularRestaurentsCollectionView.delegate = self
         popularRestaurentsCollectionView.dataSource = self
         popularRestaurentsCollectionView.isScrollEnabled = false
         popularRestaurentsCollectionView.showsVerticalScrollIndicator = false
-        popularRestaurentsCollectionView.layer.borderWidth = 1.0
-        popularRestaurentsCollectionView.layer.borderColor = UIColor.orange.cgColor
+        //        popularRestaurentsCollectionView.layer.borderWidth = 1.0
+        //        popularRestaurentsCollectionView.layer.borderColor = UIColor.orange.cgColor
         
         mostPopularRestaurentsCollectionView.delegate = self
         mostPopularRestaurentsCollectionView.dataSource = self
         mostPopularRestaurentsCollectionView.isScrollEnabled = true
-        mostPopularRestaurentsCollectionView.showsVerticalScrollIndicator = false
-        mostPopularRestaurentsCollectionView.layer.borderWidth = 1.0
-        mostPopularRestaurentsCollectionView.layer.borderColor = UIColor.green.cgColor
+        mostPopularRestaurentsCollectionView.showsHorizontalScrollIndicator = false
+        //        mostPopularRestaurentsCollectionView.layer.borderWidth = 1.0
+        //        mostPopularRestaurentsCollectionView.layer.borderColor = UIColor.green.cgColor
         
         recentItemsCollectionView.delegate = self
         recentItemsCollectionView.dataSource = self
         recentItemsCollectionView.isScrollEnabled = true
         recentItemsCollectionView.showsVerticalScrollIndicator = false
-        recentItemsCollectionView.layer.borderWidth = 1.0
-        recentItemsCollectionView.layer.borderColor = UIColor.red.cgColor
+        //        recentItemsCollectionView.layer.borderWidth = 1.0
+        //        recentItemsCollectionView.layer.borderColor = UIColor.red.cgColor
         
         deliveringOptionsStackView.addArrangedSubview(lblDelivery)
         deliveringOptionsStackView.addArrangedSubview(lblDropdown)
@@ -271,6 +270,7 @@ class ViewController: UIViewController {
         recentItemsStackView.addArrangedSubview(lblRecentItemsViewAll)
         
         view.addSubview(scrollView)
+        view.addSubview(containerView)
         scrollView.addSubview(deliveringOptionsStackView)
         scrollView.addSubview(txtSearch)
         scrollView.addSubview(popularRestaurantsStackView)
@@ -282,11 +282,10 @@ class ViewController: UIViewController {
         scrollView.addSubview(recentItemsCollectionView)
         
         NSLayoutConstraint.activate([
-            
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: containerView.topAnchor),
             
             deliveringOptionsStackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 16),
             deliveringOptionsStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 16),
@@ -296,7 +295,6 @@ class ViewController: UIViewController {
             txtSearch.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 16),
             txtSearch.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -16),
             txtSearch.heightAnchor.constraint(equalToConstant: 50),
-
             
             worldDishesCollectionView.topAnchor.constraint(equalTo: txtSearch.bottomAnchor, constant: 16),
             worldDishesCollectionView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
@@ -322,7 +320,7 @@ class ViewController: UIViewController {
             mostPopularRestaurentsCollectionView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             mostPopularRestaurentsCollectionView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             mostPopularRestaurentsCollectionView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            mostPopularRestaurentsCollectionView.heightAnchor.constraint(equalToConstant: 230),
+            mostPopularRestaurentsCollectionView.heightAnchor.constraint(equalToConstant: 300),
             
             recentItemsStackView.topAnchor.constraint(equalTo: mostPopularRestaurentsCollectionView.bottomAnchor, constant: 30),
             recentItemsStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 16),
@@ -333,17 +331,22 @@ class ViewController: UIViewController {
             recentItemsCollectionView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
             recentItemsCollectionView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
             recentItemsCollectionView.heightAnchor.constraint(equalToConstant: 350),
-            recentItemsCollectionView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
+            recentItemsCollectionView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            
+            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            containerView.heightAnchor.constraint(equalToConstant: 90)
         ])
     }
     @objc func shoppingCartTapped() {
-        // Shopping cart action
+        
     }
     
     @objc func dropDownLabelTapped() {
-
+        
     }
-
+    
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
@@ -412,7 +415,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
             let height: CGFloat = 280
             return CGSize(width: width, height: height)
         } else if collectionView == mostPopularRestaurentsCollectionView  {
-            return CGSize(width: 260, height: 220)
+            return CGSize(width: 260, height: 300)
         } else if collectionView == recentItemsCollectionView{
             let width = collectionView.frame.width - 32
             let height: CGFloat = 100

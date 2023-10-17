@@ -66,7 +66,7 @@ class MostPopularCVC: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addViews()
-             configureUI()
+//        configureUI()
     }
     
     required init?(coder: NSCoder) {
@@ -84,8 +84,8 @@ class MostPopularCVC: UICollectionViewCell {
         
         imgPopularRestaurent.topAnchor.constraint(equalTo: topAnchor).isActive = true
         imgPopularRestaurent.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        imgPopularRestaurent.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        imgPopularRestaurent.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        imgPopularRestaurent.widthAnchor.constraint(equalToConstant: 260).isActive = true
+        imgPopularRestaurent.heightAnchor.constraint(equalToConstant: 200).isActive = true
         imgPopularRestaurent.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
         lblPopularRestaurentName.topAnchor.constraint(equalTo: imgPopularRestaurent.bottomAnchor, constant: 20).isActive = true

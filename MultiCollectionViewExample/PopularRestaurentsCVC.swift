@@ -64,7 +64,7 @@ class PopularRestaurentsCVC: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addViews()
-    configureUI()
+//        configureUI()
     }
     
     required init?(coder: NSCoder) {
