@@ -23,7 +23,7 @@ class CustomTabBarController : UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addSomeTabItems()
-        btnMiddle.frame = CGRect(x: Int(self.tabBar.bounds.width)/2 - 30, y: -20, width: 60, height: 60)
+        btnMiddle.frame = CGRect(x: Int(self.tabBar.bounds.width)/2 - 30, y: -30, width: 60, height: 60)
     }
     override func loadView() {
         super.loadView()
@@ -39,7 +39,7 @@ class CustomTabBarController : UITabBarController {
         shape.fillColor = UIColor.white.cgColor
         self.tabBar.layer.insertSublayer(shape, at: 0)
         self.tabBar.itemWidth = 25
-        self.tabBar.itemPositioning = .centered
+        self.tabBar.itemPositioning = .automatic
         self.tabBar.itemSpacing = 70
         self.tabBar.tintColor = UIColor(hex: "#fe989b", alpha: 1.0)
     }
@@ -55,27 +55,34 @@ class CustomTabBarController : UITabBarController {
         vc4.title = "More"
         setViewControllers([vc1, vc2, vc3, vc4], animated: false)
         guard let items = tabBar.items else { return}
+        items[0].titlePositionAdjustment.horizontal = -10
+        items[1].titlePositionAdjustment.horizontal = -40
+        items[2].titlePositionAdjustment.horizontal = +40
+        items[3].titlePositionAdjustment.horizontal = +10
         items[0].image = UIImage(systemName: "house.fill")
-        items[1].image = UIImage(systemName: "handbag.fill")
+        items[1].image = UIImage(systemName: "person.fill")
         items[2].image = UIImage(systemName: "person.fill")
         items[3].image = UIImage(systemName: "ellipsis.circle.fill")
     }
     
     func getPathForTabBar() -> UIBezierPath {
         let frameWidth = self.tabBar.bounds.width
-        let frameHeight = self.tabBar.bounds.height + 20
-        let holeWidth = 150
-        let holeHeight = 50
-        let leftXUntilHole = Int(frameWidth/2) - Int(holeWidth/2)
+        let frameHeight = self.tabBar.bounds.height + 40
         
         let path : UIBezierPath = UIBezierPath()
         path.move(to: CGPoint(x: 0, y: 0))
-        path.addLine(to: CGPoint(x: leftXUntilHole , y: 0)) // 1.Line
-        path.addCurve(to: CGPoint(x: leftXUntilHole + (holeWidth/3), y: holeHeight/2), controlPoint1: CGPoint(x: leftXUntilHole + ((holeWidth/3)/8)*6,y: 0), controlPoint2: CGPoint(x: leftXUntilHole + ((holeWidth/3)/8)*8, y: holeHeight/2)) // part I
         
-        path.addCurve(to: CGPoint(x: leftXUntilHole + (2*holeWidth)/3, y: holeHeight/2), controlPoint1: CGPoint(x: leftXUntilHole + (holeWidth/3) + (holeWidth/3)/3*2/5, y: (holeHeight/2)*6/4), controlPoint2: CGPoint(x: leftXUntilHole + (holeWidth/3) + (holeWidth/3)/3*2 + (holeWidth/3)/3*3/5, y: (holeHeight/2)*6/4)) // part II
+        path.addLine(to: CGPoint(x: frameWidth/2 - 30 - 40 , y: 0)) // 1.Line
+        path.addQuadCurve(to: CGPoint(x: frameWidth/2 - 40, y: 60), controlPoint: CGPoint(x: frameWidth/2 - 30, y: 5))
         
-        path.addCurve(to: CGPoint(x: leftXUntilHole + holeWidth, y: 0), controlPoint1: CGPoint(x: leftXUntilHole + (2*holeWidth)/3,y: holeHeight/2), controlPoint2: CGPoint(x: leftXUntilHole + (2*holeWidth)/3 + (holeWidth/3)*2/8, y: 0)) // part III
+        path.addLine(to: CGPoint(x: frameWidth/2 - 40, y: 23))
+        path.addCurve(to: CGPoint(x: frameWidth/2 + 40, y: 23), controlPoint1: CGPoint(x: frameWidth/2 - 25, y: 60), controlPoint2: CGPoint(x: frameWidth/2 + 25, y: 60))
+        
+        path.addLine(to: CGPoint(x: frameWidth/2 + 40, y: 60))
+        path.addQuadCurve(to: CGPoint(x: frameWidth/2 + 30 + 40, y: 0), controlPoint: CGPoint(x: frameWidth/2 + 30, y: 5))
+        
+        
+        
         path.addLine(to: CGPoint(x: frameWidth, y: 0)) // 2. Line
         path.addLine(to: CGPoint(x: frameWidth, y: frameHeight)) // 3. Line
         path.addLine(to: CGPoint(x: 0, y: frameHeight)) // 4. Line
